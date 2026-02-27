@@ -72,8 +72,10 @@ TEST_CASE("Example: Simple widthdraw", "[ex-2]") {
   REQUIRE(sam_account.balance == 280.30);
 
   atm.WithdrawCash(12345678, 1234, 300);
+  atm.WithdrawCash(12345678, 1234, -20);
 
   REQUIRE(sam_account.balance != -19.70);
+  REQUIRE(sam_account.balance == 280.30);
 }
 
 TEST_CASE("Example: Print Prompt Ledger", "[ex-3]") {
