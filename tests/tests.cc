@@ -5,6 +5,8 @@
 #include "atm.hpp"
 #include "catch.hpp"
 
+#include <stdexcept>
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 //                             Helper Definitions //
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +37,11 @@ bool CompareFiles(const std::string& p1, const std::string& p2) {
 
 TEST_CASE("Example: Create a new account", "[ex-1]") {
   Atm atm;
+
+  if (atm.GetAccounts().size() != 0) {
+    throw std::invalid_argument("");
+  }
+
   atm.RegisterAccount(12345678, 1234, "Sam Sepiol", 300.30);
   auto accounts = atm.GetAccounts();
   REQUIRE(accounts.contains({12345678, 1234}));
