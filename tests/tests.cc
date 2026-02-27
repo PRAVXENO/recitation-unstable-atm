@@ -92,6 +92,12 @@ TEST_CASE("Example: Print Prompt Ledger", "[ex-3]") {
   atm.PrintLedger("./prompt.txt", 12345678, 1234);
   REQUIRE(CompareFiles("./ex-1.txt", "./prompt.txt"));
 
-  atm.PrintLedger("./ex-2.txt", 12345679, 1239);
+  
+  atm.PrintLedger("./ex-2.txt", 12345678, 1239);
+  atm.PrintLedger("./ex-3.txt", 12345679, 1234);
+  atm.PrintLedger("./ex-4.txt", 12345679, 1239);
+  
   REQUIRE(!CompareFiles("./ex-2.txt", "./prompt.txt"));
+  REQUIRE(!CompareFiles("./ex-3.txt", "./prompt.txt"));
+  REQUIRE(!CompareFiles("./ex-4.txt", "./prompt.txt"));
 }
